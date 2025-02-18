@@ -2,6 +2,33 @@
 
 This guide provides all the code and steps needed to implement soft delete functionality in a Symfony application with API Platform.
 
+This is a implementation of soft delete functionality for Symfony applications using API Platform. This implementation allows entities to be "deleted" without physically removing them from the database.
+
+## Features
+
+- Soft delete functionality via `is_deleted` flag
+- API Platform integration
+- Custom filters for showing/hiding deleted records
+- Repository methods for flexible querying
+- Easy to implement on any entity
+- Full REST API support
+
+## Database Configuration
+
+The implementation uses a `SMALLINT` column for the delete flag:
+
+```sql
+`is_deleted` SMALLINT NOT NULL DEFAULT 0
+```
+
+- **Column Name**: `is_deleted`
+- **Column Type**: `SMALLINT`/`TINYINT` (efficient storage for boolean flags)
+- **Nullable**: `false` (cannot be NULL)
+- **Default**: `0` (not deleted)
+- **Values**: 
+  - `0` = Active record
+  - `1` = Soft deleted record
+
 ## Directory Structure
 ```
 src/
